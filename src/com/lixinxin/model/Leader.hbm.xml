@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!--
+
+
+-->
+
+<hibernate-mapping package="com.lixinxin.model" default-lazy="false">
+	<class name="Leader" table="LEADER">
+		<id name="id" column="ID">
+			<generator class="increment"></generator>
+		</id>
+		<property name="name" column="NAME"></property>
+		<set name="stuffs" table="STUFF_LEADER" inverse="true">
+			<key column="LID"></key>
+			<many-to-many column="SID" class="Stuff"></many-to-many>
+		</set>
+	</class>
+	<!-- <class name="Teacher" table="TEACHER">
+	<id name="id" column="ID" >
+		主键自增策略
+			<generator class="increment"></generator>
+	</id>
+	<property name="name" column="NAME"></property>
+	<set name="students" table="STUDENT_TEACHER" lazy="true">
+		<key column="TID"></key>
+		<many-to-many column="SID" class="Student"></many-to-many>
+	</set>
+	</class> -->
+</hibernate-mapping>
